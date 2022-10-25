@@ -16,13 +16,14 @@ module OmniAuth
       end
 
       credentials do
-        {
-          token: access_token.token,
-          refresh_token: access_token.refresh_token,
-          expires: access_token.expires?,
-          expires_at: access_token.expires_at,
-          refresh_token_expires_at: refresh_token_expires_at(access_token.params['refresh_token_expires_in'])
-        }
+        { token: access_token.token }.tap do |hash|
+          hash[:refresh_token] = access_token.refresh_token if access_token.refresh_token
+          hash[:expires] = access_token.expires?
+          hash[:expires_at] = access_token.expires_at
+          if refresh_token_expires_in.present?
+            hash[:refresh_token_expires_at] = refresh_token_expires_at(refresh_token_expires_in)
+          end
+        end
       end
 
       def callback_url
@@ -36,6 +37,10 @@ module OmniAuth
 
       def basic_auth_header
         "Basic " + Base64.strict_encode64("#{options[:client_id]}:#{options[:client_secret]}")
+      end
+
+      def refresh_token_expires_in
+        access_token.params['refresh_token_expires_in']
       end
 
       def refresh_token_expires_at(expires_in_seconds)
