@@ -15,6 +15,15 @@ module OmniAuth
         super
       end
 
+      info do
+        {
+          hash[:account_type] = raw_info['account_type']
+          hash[:image] = raw_info['profile_image']
+          hash[:website_url] = raw_info['website_url']
+          hash[:nickname] = raw_info['username']
+        }
+      end
+
       credentials do
         { token: access_token.token }.tap do |hash|
           hash[:refresh_token] = access_token.refresh_token if access_token.refresh_token
@@ -23,10 +32,6 @@ module OmniAuth
           if refresh_token_expires_in.present?
             hash[:refresh_token_expires_at] = refresh_token_expires_at(refresh_token_expires_in)
           end
-          hash[:account_type] = raw_info['account_type']
-          hash[:profile_image] = raw_info['profile_image']
-          hash[:website_url] = raw_info['website_url']
-          hash[:username] = raw_info['username']
         end
       end
 
