@@ -17,10 +17,10 @@ module OmniAuth
 
       info do
         {
-          hash[:account_type] = raw_info['account_type']
-          hash[:image] = raw_info['profile_image']
-          hash[:website_url] = raw_info['website_url']
-          hash[:nickname] = raw_info['username']
+          account_type: raw_info['account_type'],
+          image: raw_info['profile_image'],
+          website_url: raw_info['website_url'],
+          nickname: raw_info['username']
         }
       end
 
