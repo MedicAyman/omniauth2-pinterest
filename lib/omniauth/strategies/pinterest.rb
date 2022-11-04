@@ -23,7 +23,15 @@ module OmniAuth
           if refresh_token_expires_in.present?
             hash[:refresh_token_expires_at] = refresh_token_expires_at(refresh_token_expires_in)
           end
+          hash[:account_type] = raw_info['account_type']
+          hash[:profile_image] = raw_info['profile_image']
+          hash[:website_url] = raw_info['website_url']
+          hash[:username] = raw_info['username']
         end
+      end
+
+      def raw_info
+        @raw_info ||= JSON.load(access_token.get('/v5/user_account').body)
       end
 
       def callback_url
