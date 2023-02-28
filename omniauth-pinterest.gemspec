@@ -3,7 +3,7 @@ require File.expand_path('../lib/omniauth-pinterest/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["David Bell"]
-  gem.email         = ["llebevad@gmail.com"]
+  gem.email         = ["dave@tailwindapp.com"]
   gem.description   = %q{OmniAuth strategy for Pinterest.}
   gem.summary       = %q{OmniAuth strategy for Pinterest.}
   gem.homepage      = "https://github.com/davebell/omniauth-pinterest"
@@ -15,8 +15,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = OmniAuth::Pinterest::VERSION
 
-  gem.add_dependency 'omniauth', '~> 1.0'
-  gem.add_dependency 'omniauth-oauth2', '~> 1.0'
+  gem.add_dependency 'omniauth', '~> 2.0'
+  gem.add_dependency 'omniauth-oauth2', '~> 1.8'
 
   gem.add_development_dependency 'rspec', '~> 2.7'
   gem.add_development_dependency 'rack-test'
