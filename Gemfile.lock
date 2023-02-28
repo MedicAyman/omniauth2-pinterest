@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     omniauth-pinterest (1.0.7)
-      omniauth (~> 2.0)
+      omniauth (> 1.0)
       omniauth-oauth2 (~> 1.8)
 
 GEM
