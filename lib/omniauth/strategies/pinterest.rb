@@ -4,9 +4,9 @@ module OmniAuth
   module Strategies
     class Pinterest < OmniAuth::Strategies::OAuth2
       option :client_options, {
-        :site => 'https://api.pinterest.com',
+        :site => 'https://api-sandbox.pinterest.com',
         :authorize_url => 'https://www.pinterest.com/oauth/',
-        :token_url => 'https://api.pinterest.com/v5/oauth/token'
+        :token_url => 'https://api-sandbox.pinterest.com/v5/oauth/token'
       }
 
       def request_phase
